@@ -40,7 +40,6 @@ entradaDados.question('Valor 1: ', function (valorUm) {
                 entradaDados.question('Escolha o número correspondente à operação: ', function (operacoes) {
 
                     let operacao = operacoes
-                    let sinal
                     let resultado
 
                     valor1 = Number(valor1)
@@ -71,56 +70,65 @@ entradaDados.question('Valor 1: ', function (valorUm) {
                     //         console.log( String(valor1).replace('.', ',') + ' ' + sinal + ' ' + String(valor2).replace('.', ',') + '  =  ' + String(resultado.toFixed(casas)).replace('.', ','))
                     //         entradaDados.close()
                     //     })
+                    // if (sinal != undefined) {
+                    //     entradaDados.question('Quantidade de casas decimais no resultado: ', function (casasDecimais) {
+                    //         casas = casasDecimais
+                    //         console.log(String(valor1).replace('.', ',') + ' ' + sinal + ' ' + String(valor2).replace('.', ',') + '  =  ' + String(resultado.toFixed(casas)).replace('.', ','))
+                    //         entradaDados.close()
+                    //     })
 
 
-                    //         Versão 2.0 Switch
-                    switch (operacao) {
-                        case '1':
-                            resultado = valor1 + valor2
-                            sinal = '+'
-                            break
-                        case '2':
-                            resultado = valor1 - valor2
-                            sinal = '-'
-                            break
-                        case '3':
-                            resultado = valor1 * valor2
-                            sinal = '*'
-                            break
-                        case '4':
-                            if (operacao == 4 && valor2 == 0) {
-                                console.log('>. Erro: Não é possível dividir por 0')
-                                entradaDados.close()
-                            } else {
-                                resultado = valor1 / valor2
-                                sinal = '/'
-                            }
-                            break
+                    //Versão 2.0 Switch
 
-                        default:
-                            console.log('>> ERRO: Isso não corresponde à nenhuma operação.')
-                            entradaDados.close()
-                            break
-                    }
 
-                    if (sinal != undefined) {
-                        entradaDados.question('Quantidade de casas decimais no resultado: ', function (casasDecimais) {
-                            casas = casasDecimais
-                            console.log(String(valor1).replace('.', ',') + ' ' + sinal + ' ' + String(valor2).replace('.', ',') + '  =  ' + String(resultado.toFixed(casas)).replace('.', ','))
-                            entradaDados.close()
-                        })
-        }
 
-            })
-        }
+                    resultado = calculadora(valor1, valor2, operacao)
+                    if(resultado)
+                    console.log('O resultado é: ' + resultado)
 
+        })
+
+            }
+        })
+
+    }
     })
-}
-})
 
 
-//função para realizar cálculos
-function calculadora (valor1,  valor2, tipoCalculo){
+//função para cálculo - com switch
+function calculadora (numero1, numero2, operacoes){
 
+    let operacao = operacoes
+    let valor1 = numero1
+    let valor2 = numero2
+    let resultado
 
+    switch (operacao) {
+        case '1':
+            resultado = valor1 + valor2
+            break
+        case '2':
+            resultado = valor1 - valor2
+            break
+        case '3':
+            resultado = valor1 * valor2
+            break
+        case '4':
+            if (operacao == 4 && valor2 == 0) {
+                console.log('>. Erro: Não é possível dividir por 0')
+                entradaDados.close()
+            } else {
+                resultado = valor1 / valor2
+            }
+            break
+        default:
+            console.log('>> ERRO: Isso não corresponde à nenhuma operação.')
+            entradaDados.close()
+            break
+    }
+
+    if (resultado != undefined)
+    return resultado.toFixed(2)
+    else
+    return false
 }
