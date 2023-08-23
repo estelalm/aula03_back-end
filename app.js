@@ -1,5 +1,5 @@
 /*********************************************************
- Objetivo: Criar uma calculadora 
+ Objetivo: Criar uma calculadora que realiza 4 operações matemáticas
  Data: 09/08/2023
  Autor: Estela Alves de Moraes
  Versão: 1.0
@@ -19,9 +19,10 @@ console.log('+-----------')
 console.log('')
 console.log('Digite os valores: ')
 
-entradaDados.question('Valor 1: ', function(valorUm){
+entradaDados.question('Valor 1: ', function (valorUm){
 
     let valor1 = valorUm.replace(',', '.')
+
     if(valor1 == '' || isNaN(valor1)){
         console.log('>> ERRO: O valor deve ser um número.')
         entradaDados.close()
@@ -35,7 +36,7 @@ entradaDados.question('Valor 1: ', function(valorUm){
                 entradaDados.close()
             }else{
             console.log('')
-            console.log('1) Soma | 2) Subtração | 3) Multiplicação | 4) Divisão')
+            console.log('1) Soma | 2) Subtração | 3) Multiplicação | 4) Divisão ')
         entradaDados.question ('Escolha o número correspondente à operação: ', function(operacoes){
     
             let operacao = operacoes
@@ -57,14 +58,21 @@ entradaDados.question('Valor 1: ', function(valorUm){
             }
             
             if( operacao != 1 && operacao != 2 && operacao != 3 && operacao != 4) {
-                console.log('>> ERRO: Esse número não corresponde à nenhuma operação.')
+                console.log('>> ERRO: Isso não corresponde à nenhuma operação.')
                 entradaDados.close()
         }else if(operacao == 4 && valor2 == 0){
             console.log('>. Erro: Não é possível dividir por 0')
             entradaDados.close()
         }else{
-            console.log( String(valor1).replace('.', ',') + ' ' + sinal + ' ' + String(valor2).replace('.', ',') + '  =  ' + String(resultado.toFixed(2)).replace('.', ','))
-            entradaDados.close()
+
+            entradaDados.question('Quantidade de casas decimais no resultado: ', function(casasDecimais){
+
+                casas = casasDecimais
+                console.log( String(valor1).replace('.', ',') + ' ' + sinal + ' ' + String(valor2).replace('.', ',') + '  =  ' + String(resultado.toFixed(casas)).replace('.', ','))
+                entradaDados.close()
+            })
+
+
         }
             
 
