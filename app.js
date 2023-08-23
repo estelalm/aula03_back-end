@@ -72,7 +72,8 @@ entradaDados.question('Valor 1: ', function (valorUm) {
                     //         entradaDados.close()
                     //     })
 
-                    //Versão 2.0 Switch
+
+                    //         Versão 2.0 Switch
                     switch (operacao) {
                         case '1':
                             resultado = valor1 + valor2
@@ -118,5 +119,8 @@ entradaDados.question('Valor 1: ', function (valorUm) {
 })
 
 
+//função para realizar cálculos
+function calculadora (valor1,  valor2, tipoCalculo){
 
 
+}
