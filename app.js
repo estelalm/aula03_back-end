@@ -42,18 +42,20 @@ entradaDados.question('Valor 1: ', function (valorUm){
             let operacao = operacoes
             let sinal
             let resultado
-    
+
+            valor1 = Number(valor1)
+            valor2 = Number(valor2)
             if(operacao == 1){
-                resultado = Number(valor1)+Number(valor2)
+                resultado = valor1+valor2
                 sinal = '+'
             }else if(operacao == 2){
-                resultado = Number(valor1)-Number(valor2)
+                resultado = valor1-valor2
                 sinal = '-'
             }else if(operacao == 3){
-                resultado = Number(valor1)*Number(valor2)
+                resultado = valor1*valor2
                 sinal = '*'
             }else if(operacao == 4){
-                resultado = Number(valor1)/Number(valor2)
+                resultado = valor1/valor2
                 sinal = '/'
             }
             
